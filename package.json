@@ -1,0 +1,20 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "MERN industrialIoT-Stancy Lee Inc",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "author": "Israel Akhigbe",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.1"
+  }
+}
