@@ -1,13 +1,614 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+  *{
+    margin:0;
+    box-sizing: border-box;
+  }
+
+  body{
+    background: radial-gradient(circle, #7F8487, #413F42, black);
+
+  }
+  .box ul{
+    position: relative;
+    justify-content: space-between;
+    margin-top:20px;
+
+  }
+
+  .box ul li{
+    list-style: none;
+    width: 90vw;
+    height: 50px;
+    margin:  auto ;
+    
+  }
+
+
+  .box ul li div{
+    width: 50px;
+    height:50px;
+    transform:  scale(1) rotate(30deg);
+    
+  }
+
+  @keyframes animate{
+    100%
+    {
+      border-radius: 30px;
+      width:50%;
+      opacity:0;
+    }
+  }
+
+  @keyframes reversebox{
+    25%{
+        transform: rotate(-30deg);
+        border-radius:20px;
+    }
+    50%{
+      transform: rotate(45deg);
+    }
+    75%{
+      transform: rotate(0);
+      filter: blur(6px);
+      background: rgb(104, 78, 78)
+     
+    }
+    100%{
+        background: slategrey;
+    }
+  }
+
+  .box ul li:nth-child(1) div:nth-child(1){
+    animation: animate 2s linear forwards infinite;
+  }
+
+
+  .box ul li:nth-child(1) div:nth-child(2){
+    animation: reversebox 2s ease forwards infinite;
+    animation-delay:2s
+  }
+  .box ul li:nth-child(2) div:nth-child(1){
+    animation: reversebox 2s ease forwards infinite;
+    animation-delay: 4s;
+  }
+  .box ul li:nth-child(2) div:nth-child(2){
+    animation: animate 2s linear forwards infinite;
+  }
+
+   .box ul li:nth-child(1){
+    
+    display: flex;
+    justify-content: space-between;
+
+  } 
+
+  .box ul li:nth-child(2){
+    
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 450px;
+    left: 50px;
+
+  } 
+
+.login-page{
+  margin:auto;
+  height: 500px;
+  width: 400px;
+  box-shadow:0 0 3px 4px #5a5a5a;
+  position: relative;
+  padding-bottom: 3px;
+  backdrop-filter:blur(6px);
+  color: white;
+  margin-bottom: 10px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.login-page .iot-img{
+  background: url('../../iot.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 270px;
+  width: inherit;
+  margin: auto;
 }
+.login-page .iot-img:before{
+  content: '';
+  width: inherit;
+  height: 270px;
+  background: rgba(26, 25, 25, 0.5);
+  z-index: 1;
+  position: absolute;
+}
+.info{
+  position: absolute;
+  text-align: center;
+  color: white;
+  top: 25%;
+  margin: auto;
+  z-index:3;
+  left: 10%;
+  font-family: 'Ubuntu', sans-serif;
+  text-shadow: 2px 2px 3px #2eb1f8;
+}
+
+.login-page form {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.login-page form input{
+  padding: 10px;
+  margin-top: 5px;
+  border: none;
+  background: #BFD8AF;
+  border-radius: 20px;
+}
+
+input [type='text']:focus{
+  border-bottom: .5px solid #2eb1f8;
+}
+.style{
+  text-decoration: none;
+  color: #85BFFF;
+}
+.footer{
+  color: white;
+  display: flex;
+  /* flex-direction: row; */
+  align-content: space-between;
+  justify-content: space-evenly;
+}
+.loader{
+  background:url('../src/spun.gif');
+  background-repeat: no-repeat;
+  background-size:30px 30px;
+  background-position: center;
+  height: 30px;
+  width: 30px;
+  align-self: center;
+  margin-top: 5px;
+}
+.login-page form .transform{
+  width: 20%;
+  margin: 20px auto;
+  transition: all ease-out .5s;
+  font-weight: 100;
+}
+.login-page form .transform:hover{
+  background: #3D4F6F;
+  color: white;
+}
+
+.login-page p{
+  text-align: center;
+  margin-top: -4px;
+  padding-bottom: 6px;
+
+}
+
+/* REGISTER SCREEN */
+.entryanimation ul{
+  display: flex;
+  color: white;
+  transform: translate(35%);
+  list-style: none;
+}
+.entryanimation ul li{
+  margin: 10px 10px;
+}
+.entryanimation ul li:nth-child(odd){
+  
+  
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 0 5px 1px white,0 0 1px 2px #2eb1f8, 0 0 5px 3px rgb(166, 166, 166), 0 0 10px 5px white;
+}
+
+.entryanimation ul li:nth-child(even){  
+  width: 0;
+  height: 40px;
+  animation: protrude 1s linear forwards;
+
+}
+
+.entryanimation ul li:nth-child(even) p{
+  text-align: center;
+  animation-delay: 1s;
+  display: inherit;
+  padding: 10px 0;
+  font-family: 'Ubuntu', sans-serif;
+  
+  
+}
+
+@keyframes protrude{
+  
+  50%{
+    box-shadow: 0 0 5px 1px white inset,0 0 7px 1px rgb(186, 183, 183),0 0 7px 2px #2eb1f8;
+    opacity:0;
+  }
+ 100%{
+  width:200px;
+  box-shadow: 0 0 5px 1px white inset,0 0 7px 1px rgb(186, 183, 183),0 0 7px 2px #2eb1f8;
+  opacity: 1
+  
+ }
+}
+
+.entryanimation ul li:nth-child(1){
+  background: linear-gradient(#2eb1f8, #9fd1ec);
+  border-top-left-radius: 20px ;
+  border-bottom-left-radius: 20px;
+}
+.entryanimation ul li:nth-child(3){
+  background: linear-gradient(to top left, rgb(255,196,118), #FEFFEE);
+  border-top-right-radius:20px ;
+  border-bottom-right-radius:20px ;
+}
+
+/* form styling in register */
+.parent .register-content{
+  display:flex;
+  width:50vw;
+  height: 65vh;
+  background:rgba(127, 132, 135,.5);
+  border-radius: 10px;
+  margin:30px auto;
+  
+}
+
+.shape-1,.shape-2{
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 1px solid black;
+  background: linear-gradient(to top left, rgb(255,196,118), #FEFFEE);
+  top:10px;
+  left:250px;
+  border-radius: 75px;
+  z-index: -1;
+  border: none;
+  opacity: .7;
+}
+.shape-2{
+  top: 70%;
+  left:69%;
+  background: linear-gradient(#2eb1f8, #9fd1ec);
+  
+  
+}
+.img-banner{
+  width: 40%;
+  background-image:linear-gradient(rgba(37, 37, 37, .5), rgba(0,0,0, .5)), url('../src/iot.jpg'); 
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+
+.form-fields{
+  display: flex;
+  flex-direction: column;
+  margin: 20px 40px;
+  width: 50%;
+  align-content: center;
+  backdrop-filter: blur(100px);
+  
+}
+
+.form-fields input{
+  width: 80%;
+  height: 40px;
+  margin-left:37px;
+  margin-top: 5%;
+  padding:0 10px;
+  border: none;
+  border-bottom: 3px solid #ee9b00;
+  background: transparent;
+  color: white;
+
+}
+
+.form-fields input[type='submit']{
+  width:20%;
+  margin: 20px auto;
+  color: white;
+  font-weight: 50;
+  transition: all .4s ease-in-out;
+}
+
+.form-fields input[type='submit']:hover{
+  background: #2eb1f8;
+  padding: 0 10p 10px 0;
+  border-radius: 10px;
+  border-bottom: none;
+}
+
+.register-content .social-media{
+  position: absolute;
+  top: 70vh;
+  left: 51vw;
+  color: white;
+}
+
+.social-media  ul {
+display: flex;
+justify-content: space-evenly;
+list-style-type: none;
+}
+.social-media ul li{
+  list-style: none;
+  margin: 20px 10px;
+  transition:all ease .5s;
+
+}
+
+
+.social-media ul li:hover{
+  color:#2eb1f8;
+  size: 22px;
+  margin-top: 18px;
+}
+.social-media ul li:nth-child(1):hover{
+  color: black;
+  size: 22px;
+}
+.social-media ul li:nth-child(3):hover{
+  color: red;
+  size: 22px;
+}
+.social-media ul li:nth-child(5):hover{
+  color: #1877F2;
+  size: 22px;
+}
+
+.overlay{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top:0;
+  left:0;
+  backdrop-filter: blur(6px);
+  
+}
+
+.overlay .spinner{
+  position: absolute;
+  width: 10vw;
+  height: 20vh;
+  background: url('../src/spinner.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  z-index:3;
+  left: 45%;
+  top: 35%;
+}
+
+/* modal styling */
+.modal-false{
+  display: none;
+}
+
+.modal-content {
+  font-family: 'Ubuntu', sans-serif;
+  position: relative;
+  width: 50vw;
+  height: 30vh;
+  margin: auto;
+  background:transparent;
+  box-shadow: 0 0 30px 6px #2eb1f8 inset, 0 0 7px 3px white ;
+  top:-23vw;
+  padding-top:10px;
+  z-index: 4;
+  animation: scaling .7s ease;
+  
+}
+
+@keyframes scaling{
+  from{
+    transform: scale(.02);
+  }
+  to{
+      transform: scale(1);
+  }
+}
+.modal-content form{
+  font-family: 'Ubuntu', sans-serif;
+  width: 50%;
+  margin-left: 35%;
+  margin-top: 30px;
+}
+
+.modal-content form label{
+  display: block;
+  margin: 7px auto;
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.modal-content form input{
+  height: 30px;
+  border-radius: 10px;
+  padding: 10px;
+  margin:10px auto;
+  margin-left: 20px;
+  border:none;
+}
+::placeholder{
+  color: white;
+}
+
+.credential-change input::-webkit-input-placeholder{
+   color: black;
+}
+.credential-change input[type='submit']{
+  display: block;
+  margin-left: 25%;
+  transition: all .7s ease;
+}
+
+.modal-content .icon-close-btn{
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  background:radial-gradient(circle, rgba(160, 159, 159, .9), red);
+  left: 114vh;
+  top:-10px;
+  border-radius: 20px;
+  text-align: center;
+  color:white;
+  
+}
+.modal-content form button {
+  width: 40%;
+  height: 30px;
+  border: none;
+  border-radius: 20px;
+  transition: all .5s ease-in;
+}
+.transform{
+  margin-left:-50px;
+  
+}
+
+.transform-red{
+  width: 50%;
+}
+
+.transform:hover{
+  background: #2eb1f8;
+  color:white;
+}
+.transform-red:hover{
+  background:  red;
+  color: white
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

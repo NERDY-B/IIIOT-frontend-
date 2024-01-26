@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import HomeScreen from './screens/HomeScreen';
+// import LoginScreen from './screens/LoginScreen'
+import LoginScreenUpdate from './screens/LoginScreenUpdate'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Container } from 'react-bootstrap'
+import './index.css'
+import RegisterScreen from './screens/RegisterScreen';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Container>
+          {/* //programmatically add header component when it route is not Homescreen 
+          //check which of the defualt props has the path or url value and destructure */}
+          <Route path='/' component={HomeScreen} exact />
+          <Route path='/register' component={RegisterScreen}  />
+          <Route path='/testLogin' component={LoginScreenUpdate}  />
+        </Container>
+      </Router>
+    </>
   );
 }
 
