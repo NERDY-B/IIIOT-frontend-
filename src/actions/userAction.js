@@ -15,7 +15,10 @@ import {
      OTP_RESEND_FAIL,
      CHANGE_EMAIL_REQUEST,
      CHANGE_EMAIL_SUCCESS,
-     CHANGE_EMAIL_FAIL} from "../constants/userConstant";
+     CHANGE_EMAIL_FAIL,
+     FORGOT_PASSWORD_REQUEST,
+     FORGOT_PASSWORD_SUCCESS,
+     FORGOT_PASSWORD_FAIL} from "../constants/userConstant";
 
 export const userLogin = (email, password) => async (dispatch) => {
     try {
@@ -170,5 +173,43 @@ export const changeEmail = (email, newEmail) => async(dispatch) =>{
             payload: error.message
         })
     }
+
+
+    
+   
+}
+
+export const forgotPassword = (email) => async(dispatch, getState) =>{
+    try {
+        
+        // let token = getState().userLogin.data;
+        // console.log(token)
+        dispatch({
+            type: FORGOT_PASSWORD_REQUEST
+        })
+    
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        
+           const {data} = await axios.get(`https://industrialiot.onrender.com/api/verifyemail`, {email}, config)        
+
+    
+        dispatch({
+            type: FORGOT_PASSWORD_SUCCESS,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: FORGOT_PASSWORD_FAIL,
+            payload: error.message
+        })
+    }
+
+
+    
    
 }

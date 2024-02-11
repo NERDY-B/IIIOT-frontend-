@@ -71,7 +71,7 @@
   }
   .box ul li:nth-child(2) div:nth-child(1){
     animation: reversebox 2s ease forwards infinite;
-    animation-delay: 4s;
+    animation-delay: 3s;
   }
   .box ul li:nth-child(2) div:nth-child(2){
     animation: animate 2s linear forwards infinite;
@@ -107,7 +107,8 @@
 }
 
 .login-page .iot-img{
-  background: url('../../iot.jpg');
+  /* background: url('../../iot.jpg'); */
+  background: url('../iot.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -139,14 +140,17 @@
   display: flex;
   flex-direction: column;
   padding: 5px;
+  width: 80%;
+  margin: auto;
 }
 
 .login-page form input{
   padding: 10px;
   margin-top: 5px;
   border: none;
-  background: #BFD8AF;
-  border-radius: 20px;
+  background: transparent;
+  border-bottom: 3px solid #ee9b00;
+  color: white;
 }
 
 input [type='text']:focus{
@@ -180,7 +184,7 @@ input [type='text']:focus{
   font-weight: 100;
 }
 .login-page form .transform:hover{
-  background: #3D4F6F;
+  background: #2eb1f8;
   color: white;
 }
 
@@ -276,20 +280,22 @@ input [type='text']:focus{
   opacity: .7;
 }
 .shape-2{
+
   top: 70%;
   left:69%;
   background: linear-gradient(#2eb1f8, #9fd1ec);
   
-  
 }
 .img-banner{
+
   width: 40%;
-  background-image:linear-gradient(rgba(37, 37, 37, .5), rgba(0,0,0, .5)), url('../src/iot.jpg'); 
+  background-image:linear-gradient(rgba(37, 37, 37, .5), rgba(0,0,0, .5)), url('./iot.jpg'); 
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  
 }
 
 
@@ -318,17 +324,21 @@ input [type='text']:focus{
 
 .form-fields input[type='submit']{
   width:20%;
-  margin: 20px auto;
+  /* margin: 20px auto; */
+  margin: 3px auto 7px auto;
   color: white;
   font-weight: 50;
   transition: all .4s ease-in-out;
+  padding-right: 10px;
+  text-align: center;
 }
 
 .form-fields input[type='submit']:hover{
   background: #2eb1f8;
+
   padding: 0 10p 10px 0;
-  border-radius: 10px;
-  border-bottom: none;
+  /* border-radius: 10px; */
+  /* border-bottom: none; */
 }
 
 .register-content .social-media{
@@ -434,14 +444,26 @@ list-style-type: none;
   color: white;
   font-family: 'Ubuntu', sans-serif;
 }
-
+.modal-content form .input-proceed{
+  display: flex;
+}
 .modal-content form input{
   height: 30px;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   padding: 10px;
   margin:10px auto;
   margin-left: 20px;
   border:none;
+}
+.input-proceed label{
+position: absolute;
+left:33.3vw;
+top:68px;
+padding:6px;
+border-top-right-radius: 10px;
+border-bottom-right-radius: 10px;
+background-color: red;
 }
 ::placeholder{
   color: white;
@@ -494,6 +516,147 @@ list-style-type: none;
 }
 
 
+/* ----***||login screen */
+/* responsiveness */
+@media screen and (max-width: 600px){
+  body{
+    overflow-y: hidden;
+  }
+  .login-page{
+    margin:30% auto;
+    height: 500px;
+    width: 400px;
+    box-shadow:0 0 3px 4px #5a5a5a;
+    position: relative;
+    padding-bottom: 3px;
+    backdrop-filter:blur(6px);
+    color: white;
+    margin-bottom: 10px;
+  }
+  .box ul li div{
+    display: none;
+    
+  }
+
+  /* register screen */
+  .entryanimation{
+    display: none;
+  }
+  .shape-1, .shape-2{
+    display: none;
+  }
+
+  .parent .register-content{
+    height: 100vh;
+    width: 100%;
+  }
+  /* .parent .register-content form{
+    margin: auto;
+  } */
+  .register-content .social-media{
+    left: 5vw;
+    top: 55vh;
+  }
+  .parent .img-banner{
+    display: none;
+  }
+
+  .parent .register-content{
+    overflow-y: hidden;
+    
+  }
+}
+
+/* forgotscreen style */
+.forgotPass-container{
+   color: white;
+   font-family: 'Ubuntu', sans-serif;
+}
+.forgotPass-container  h2{
+  text-align: center;
+  margin: auto;
+  color: white;
+ 
+}
+
+
+
+/* .forgotPass-container p{
+  text-align: center
+} */
+.forgotPass-container .sign-up{
+  width: 100%;
+  height: 40px;
+  /* border-radius: 20px; */
+  border: none;
+  display: block;
+  margin:7% 0 ;
+  transform: translateX(-25%);
+  background: white;
+  color: black;
+  text-align: center;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: all .7s ease;
+}
+
+.forgotPass-container .sign-up:hover{
+  color: white;
+  background: #2eb1f8;
+}
+
+.forgotPass-form{
+  margin: 5% auto;
+  width: 30%;
+  height: 80vh;
+  /* background-color: red; */
+  box-shadow:0 3px 5px 3px #2eb1f8; 
+  overflow: hidden;
+}
+
+.forgotPass-form form {
+  display: block;
+  transform: translateX(25%)
+}
+
+.forgotPass-form form label{
+  margin-top: 10px;
+  border-bottom: 3px dotted grey;
+  padding: 5px;
+  
+}
+.forgotPass-form form input{
+  width: 100%;
+  height: 40px;
+  /* border-radius: 20px; */
+  padding-left: 10px;
+  background:transparent;
+  border: none;
+  display: block;
+  margin:7% 0 ;
+  transform: translateX(-25%);
+  border-bottom: 3px solid #ee9b00;
+  color: white;
+}
+.proceed{
+  /* border-radius: 20px; */
+  background: white;
+  /* border: none;
+  width: 20px; */
+  transition: all .7s ease;
+  cursor: pointer;
+}
+.proceed:hover{
+  color: white;
+  background: #2eb1f8;
+}
+input[type='submit']{
+  width: 20px;
+}
+
+/* .forgotPass-form form  p{
+  margin: 20px 0;
+} */
 
 
 

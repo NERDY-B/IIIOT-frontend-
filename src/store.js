@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 // import { userReducer } from './reducers/userReducer'
-import { changeEmailReducer, genOTPReducer, userLoginReducer, userRegisterReducer } from './reducers/userReducers'
+import { changeEmailReducer, forgotPasswordReducer, genOTPReducer, userLoginReducer, userRegisterReducer } from './reducers/userReducers'
 import {pinReducerBtn} from './reducers/pinApiStartReducer'
 import { stopRunItem } from './reducers/stopReducer'
 import { startRunItem } from './reducers/startReducer'
@@ -14,7 +14,8 @@ const reducer = combineReducers({
     changeEmailId: changeEmailReducer,
     pinMotor: pinReducerBtn,
     startButton: startRunItem,
-    stopButton: stopRunItem
+    stopButton: stopRunItem,
+    forgotPassword: forgotPasswordReducer
 
 
 })

@@ -57,9 +57,9 @@ const HomeScreen = (defaultProps) => {
         e.preventDefault()
         dispatch(userLogin(email, password))
 
-        if ( loading ) {
-            <Loader />
-        }
+        // if ( loading ) {
+        //     <Loader />
+        // }
         
         // if (success) {
         //     history.push('/testLogin')
@@ -93,15 +93,15 @@ const HomeScreen = (defaultProps) => {
                   
                   { (success === false) && <div style={{color: 'maroon', textAlign: 'center'}}>Wrong credentials</div>}
                   {/* <label>Email:</label> */}
-                  <input type='text' placeholder='email, user id , number' value={email} onChange={userHandler} />
+                  <input type='text' placeholder='Email, User id , Number' value={email} onChange={userHandler} />
                   {/* <label>Password:</label> */}
-                  <input type='password' placeholder='password' value={password} onChange={passHandler} />
+                  <input type='password' placeholder='Password' value={password} onChange={passHandler} />
                   {(loading)? <div className="loader"></div>: <input type='Submit' value='Log In' className='transform' />}
               </form>
                 <div className='footer'>
 
                     <p onClick={()=>window.location.reload()}> Don't have an account ? <Link to='/register' className='style'>Register</Link> </p> 
-                    <p><Link style={{color:'maroon', textDecoration: 'none'}}> Forgot Password</Link></p>
+                    <p><Link to='/forgotpassword' style={{color:'maroon', textDecoration: 'none'}}> Forgot Password</Link></p>
                 </div>
             </div>
       
