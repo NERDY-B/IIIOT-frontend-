@@ -10,7 +10,7 @@ import { FaGithub } from "react-icons/fa6";
 import { FaGoogle } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa6";
 import { FaXTwitter } from "react-icons/fa6";
-import video from '../video/IOT.mp4';
+// import video from '../video/IOT.mp4';
 import { MdClose } from "react-icons/md";
 
 
@@ -29,9 +29,13 @@ const RegisterScreen = (defaultProps) => {
     const [confirmPassword, setConPassword ] = useState('');
     let [modalOpen, setModalOpen] = useState(state);
     let [timer, setTimer] = useState(60)
-    
+    let inputValidation = undefined;
 
-   
+
+    // if((userName && Email && password && confirmPassword) === undefined || '') && inputValidation = false;
+    // console.log(userName);
+
+   const checkInput = (userName  && Email && password && confirmPassword ) === '';
     
     const checkPassword =  (confirmPassword !== password)
 
@@ -47,13 +51,7 @@ const RegisterScreen = (defaultProps) => {
 
 let otpvalue = [...otp]
 
-if(otpvalue.length === 6){
-    dispatch(genOTP((otp), Email))
-    (successOTP && history.push('/testLogin'))
-    setOTP('')
-        // otpvalue = ''
-       
-    }
+
         // else setOTP('')
 
 //end of the use effect scope
@@ -69,10 +67,16 @@ if(errorOTP){
         clearInterval(intervalId)
     }
 }
-   
+  
     const registerHandler = (e) => {
         e.preventDefault()
+        // console.log(userName, Email, password, 'returned ');
         dispatch(userRegister(Email, userName, password));
+        // if((userName && Email && password ) === ''){
+        //     inputValidation = false;
+        // }else if(inputValidation){
+        //     dispatch(userRegister(Email, userName, password));
+        // }
         setModalOpen(!state)
         localStorage.setItem('email', Email);
         // setTimer()
@@ -111,12 +115,27 @@ if(errorOTP){
         
         setOldMail()
         
-
     }
 
-    const otpHandler = (e) => {
-        setOTP(e.target.value);
+    const inputotpHandler = (e) => {
+        setOTP(e.target.value);      
+        
     }
+
+    const OtpHandler = (e) => {
+        const dispatch = useDispatch()
+        if(otpvalue.length === 6){
+            dispatch(genOTP((otp), Email))
+            // (successOTP && history.push('/testLogin'))
+            (successOTP && console.log('otp received'))
+            setOTP('')
+                // otpvalue = ''
+               
+            }
+        
+        
+    }
+   
    
     const resendHandler = (e) => {
         e.preventDefault()
@@ -163,17 +182,17 @@ if(errorOTP){
                     </video> */}
                 </div>
                 <form className='form-fields' onSubmit={registerHandler}>
-                       
+                       {checkInput && <p style={{color:"white", textAlign:"center"}}>Fill all Fields</p>}
                             <input type='text' value={userName} onChange={usernameHandler} className='style'  placeholder='Username or id'/>
                             <input type='text' value={Email} onChange={ emailHandler} className='style' placeholder='Email'/>                
                             <input type='password' value={password} onChange={ passwordHandler }  className='style' placeholder='Password'/>
                         
-                        { (checkPassword) &&  <p style={{ color : 'red'}}>Password incorrect</p>}
+                        { (checkPassword) &&  <p style={{ color : 'white', marginLeft: '32px'}}>Password incorrect</p>}
                          <input type='password' value={confirmPassword} onChange={confirmPasswordHandler}  className='style' placeholder='Confirm Password'/>
                         
                         
                         {(loading) && <div className='loading'></div>}
-                        <input type='submit' value='Register' className='transform style'/>
+                        {(!checkInput) && <input type='submit' value='Register' className='transform style' />}
                         {/* <input type='text' value='' placeholder='try here'/> */}
                     </form>
 
@@ -214,7 +233,13 @@ if(errorOTP){
                                     <div className='icon-close-btn' onClick={closeModal}><MdClose size='22px'/></div>
                                         <label> Input OTP sent to your mail:</label>
                                     
-                                        <input type='text' pattern="[0-9]{1,6}" title='Digits only' value={otp} onChange={otpHandler} className='modal-text' />
+                                        <div className='input-proceed'>
+
+                                            <input type='text' pattern="[0-9]{1,6}" title='Digits only' value={otp} onChange={inputotpHandler} className='modal-text' />
+                                            {/* <input type='text' pattern="[0-9]{1,6}" title='Digits only' value={otp} onChange={otpHandler} className='modal-text' /> */}
+                                            <label onClick={(otpvalue.length === 6)&& dispatch(genOTP(otp, Email))}>xxx</label>
+                                        </div>
+                                        
                                         <div>
                                             { (loadingOTP)&& <div className="loader"></div>} 
             
