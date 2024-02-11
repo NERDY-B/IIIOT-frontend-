@@ -7,6 +7,8 @@
 
   body{
     background: radial-gradient(circle, #7F8487, #413F42, black);
+    overflow: hidden;
+    font-family: 'Ubuntu', sans-serif;
 
   }
   .box ul{
@@ -389,7 +391,7 @@ list-style-type: none;
   
 }
 
-.overlay .spinner{
+.overlay .spinner-registration{
   position: absolute;
   width: 10vw;
   height: 20vh;
