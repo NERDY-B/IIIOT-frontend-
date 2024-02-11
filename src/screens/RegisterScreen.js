@@ -216,7 +216,7 @@ if(errorOTP){
                 { loading ? 
                     
                         <div className='overlay'>
-                            <div className='spinner'></div>
+                            <div className='spinner-registration'></div>
                            
                         </div>
                     // </div>
