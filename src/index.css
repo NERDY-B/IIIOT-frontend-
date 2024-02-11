@@ -7,8 +7,9 @@
 
   body{
     background: radial-gradient(circle, #7F8487, #413F42, black);
+
+    overflow: hidden;
     font-family: 'Ubuntu', sans-serif;
-    overflow:hidden;
 
   }
   .box ul{
