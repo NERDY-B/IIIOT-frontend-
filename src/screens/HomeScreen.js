@@ -38,7 +38,7 @@ const HomeScreen = (defaultProps) => {
     
     useEffect( () => {
         if(success){
-            history.push('/testLogin')
+            history.push('/spinner')
         }
     }, [success, history])
 
