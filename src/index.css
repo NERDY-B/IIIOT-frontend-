@@ -11,6 +11,10 @@
     font-family: 'Ubuntu', sans-serif;
     background-repeat: no-repeat;
 
+
+    overflow: hidden;
+    font-family: 'Ubuntu', sans-serif;
+
   }
   .box ul{
     position: relative;
