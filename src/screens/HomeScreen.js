@@ -28,8 +28,8 @@ const HomeScreen = (defaultProps) => {
 
     const userInfo = useSelector(state => state.userLogin)
     // const { loading, success, data } = userInfo
-    const { loading, success, data } = userInfo
-   
+    const { loading, success, data } = userInfo;
+    
     
     
 
@@ -87,7 +87,7 @@ const HomeScreen = (defaultProps) => {
         </div>
             <div className='login-page'>
                 <div className='iot-img'></div>
-                <h2 className='info'>Power Rev: Infinite possiblities , Max supervision </h2>
+                <h2 className='info'>Power IIOT: Infinite possiblities , Max supervision </h2>
             
                 <form onSubmit={loginHandler} > 
                   
@@ -100,7 +100,7 @@ const HomeScreen = (defaultProps) => {
               </form>
                 <div className='footer'>
 
-                    <p onClick={()=>window.location.reload()}> Don't have an account ? <Link to='/register' className='style'>Register</Link> </p> 
+                    <p > Don't have an account ? <Link to='/register' className='style'>Register</Link> </p> 
                     <p><Link to='/forgotpassword' style={{color:'maroon', textDecoration: 'none'}}> Forgot Password</Link></p>
                 </div>
             </div>

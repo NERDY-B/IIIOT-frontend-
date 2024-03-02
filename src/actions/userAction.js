@@ -20,8 +20,9 @@ import {
      FORGOT_PASSWORD_SUCCESS,
      FORGOT_PASSWORD_FAIL} from "../constants/userConstant";
 
-export const userLogin = (email, password) => async (dispatch) => {
+export const userLogin = (email, password) => async (dispatch, getState) => {
     try {
+        
         dispatch({ type: USER_LOGIN_REQUEST })
 
         const config = {
@@ -37,8 +38,7 @@ export const userLogin = (email, password) => async (dispatch) => {
             type: USER_LOGIN_SUCCESS,
             payload: data
          })
-
-        console.log(data)
+        
 
 
     } catch (err) {
@@ -175,41 +175,5 @@ export const changeEmail = (email, newEmail) => async(dispatch) =>{
     }
 
 
-    
-   
 }
 
-export const forgotPassword = (email) => async(dispatch, getState) =>{
-    try {
-        
-        // let token = getState().userLogin.data;
-        // console.log(token)
-        dispatch({
-            type: FORGOT_PASSWORD_REQUEST
-        })
-    
-        const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
-
-        
-           const {data} = await axios.get(`https://industrialiot.onrender.com/api/verifyemail`, {email}, config)        
-
-    
-        dispatch({
-            type: FORGOT_PASSWORD_SUCCESS,
-            payload: data
-        })
-    } catch (error) {
-        dispatch({
-            type: FORGOT_PASSWORD_FAIL,
-            payload: error.message
-        })
-    }
-
-
-    
-   
-}
