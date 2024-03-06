@@ -66,7 +66,8 @@ const ValidateEmail= (email) =>
     return (false)
 }
 
-let otpvalue = [...otp]
+// let otpvalue = [...otp]
+
 
 
         // else setOTP('')
@@ -150,8 +151,13 @@ if(errorOTP){
 
     const OtpHandler = (e) => {
         // const dispatch = useDispatch()
-        setOTP(e.target.value)
-        console.log(otp)
+        otp = setOTP(e.target.value)
+        let otpvalue = otp.trim();
+        console.log(otpvalue);
+        // console.log(otp)
+
+        // otpvalue.trim()
+
         if(otpvalue.length === 6){
             dispatch(genOTP((otp), Email))
             // (successOTP && history.push('/testLogin'))
@@ -268,7 +274,7 @@ if(errorOTP){
 
                                                 */}
                                             {/* <input type='text' pattern="[0-9]{1,6}" title='Digits only' value={otp} onChange={inputotpHandler} className='modal-text' /> */}
-                                            <input type='text' pattern="[0-9]{1,6}" title='Digits only' value={otp} onChange={OtpHandler} className='modal-text' />
+                                            {(loadingOTP)? <div className='loader'></div> :<input type='text' pattern="[0-9]{1,6}" title='Digits only' value={otp} onChange={OtpHandler} className='modal-text' />}
                                             {/* <label onClick={(otpvalue.length === 6)&& dispatch(genOTP(otp, Email))}>xxx</label> */}
                                         </div>
                                         

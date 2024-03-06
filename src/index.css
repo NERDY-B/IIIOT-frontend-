@@ -532,6 +532,13 @@ background-color: red;
 @media screen and (max-width: 560px){
   body{
     background-repeat: no-repeat;
+    overflow-x: scroll;
+  }
+/* min-width: 590px */
+  @media screen and (max-width: 636px){
+    .controls{
+      position: fixed;
+    }
   }
 }
 @media screen and (max-width: 600px){
@@ -871,6 +878,7 @@ li{
    /* position: sticky; */
    /* we can remove this property or uncomment it  */
    transform: translateY(-60px);
+   z-index: -2;
 }
 
 .startBtn {
@@ -1007,6 +1015,7 @@ input:checked[type="checkbox"]:after{
   top:150px;
 } */
 
+
 .content-table {
   border-collapse: collapse;
   margin: 5% auto;
@@ -1107,6 +1116,7 @@ input:checked[type="checkbox"]:after{
  left: 25%;
  max-height: 90%;
  backdrop-filter: blur(3px);
+ /* overflow: scroll; */
 }
 
 .registered-user form{
@@ -1120,8 +1130,14 @@ input:checked[type="checkbox"]:after{
  background: rgba(255, 255, 255, .5);
 }
 
+.table-data{
+  overflow: scroll;
+}
+
 .registered-user form table{
   padding: 20px;
+  width: inherit;
+  height: inherit;
 }
 
 .registered-user form table tr th{
