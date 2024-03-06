@@ -5,26 +5,52 @@ import {useDispatch, useSelector} from 'react-redux'
 import Header from '../components/Header'
 import { useHistory } from 'react-router-dom';
 
+
 // import ControlBtn from '../components/ControlBtn'
+// eslint-disable-next-line
+
+import Table from '../components/Table'
 import { GoGear } from "react-icons/go";
 
 
+   
+
+
+
 const pin = '26';
+
 const SpinnerScreen = () => {
+    console.log(window.scrollY, window.scrollX);
+    console.log(window.innerHeight, window.innerWidth);
+
+    window.scrollTo({
+        y:-50,
+        x:0
+    })
   
     const history = useHistory();
+
     const userLogin = useSelector(state => state.userLogin)
     const { data: access_token } = userLogin
     console.log(userLogin);
 
+    const allUsers = useSelector(state => state.allUsers);
+    const {loading} = allUsers;
+
+    const control = useSelector(state => state.showUsers);
+    const {controlData, disabled} = control;
+
     const [isSpinning, setIsSpinning] = useState(false);
     let state;
     
+    const allRegisteredUsers =  useSelector((state) => state.allUsers);
+    let {loading: loadingRegUsers, success} = allRegisteredUsers;
+
     const dispatch = useDispatch()
     
   
 
-
+console.log(disabled);
     const startBtnHandler = (e) => {
 
         if(!access_token?.token) {
@@ -53,13 +79,13 @@ const SpinnerScreen = () => {
 
        
     }
-
+    // console.log(`this is the screenval`, showTable)
 
     return (
 
         <>
 
-        
+        {};
             <Header />
 
            
@@ -69,13 +95,23 @@ const SpinnerScreen = () => {
                     <div className='spinner-stop' >{console.log('stop')}</div>
                 )}
 
-              
-           
+{/* #474859 */}
+{/* rgb(71,72,89) */}
 
-            <div className='controls'>
+              <div className='registered-user'>
+                {/* console.log(DISPLAYHIDDEN); */}
+               
+                   {(loading)?<div className="loader-big"></div> : <Table display={controlData} className='table-data' />} 
+
+                
+
+              </div>
+           
+{/* {console.log(disabled)} */}
+            <div className='controls' >
                     <p className='none'></p>
                     <button className='startBtn' onClick={startBtnHandler} >START</button>
-                    <button className='stopBtn'  onClick={stopBtnHandler}>STOP</button>
+                    <button className='stopBtn'  onClick={stopBtnHandler} >STOP</button>
                
                </div>
             

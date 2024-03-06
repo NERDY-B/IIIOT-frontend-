@@ -86,15 +86,4 @@ export const changeEmailReducer = (state ={}, action) => {
     }
 }
 
-export const forgotPasswordReducer = (state ={}, action) => {
-    switch(action.type){
-        case FORGOT_PASSWORD_REQUEST:
-            return{loading: true}
-        case FORGOT_PASSWORD_SUCCESS:
-            return {loading: false, success: true, emailInfo:action.payload}
-        case FORGOT_PASSWORD_FAIL: 
-            return {loading: false, error: action.payload}
-        default:
-            return state
-    }
-}
+

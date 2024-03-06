@@ -7,6 +7,10 @@
 
   body{
     background: radial-gradient(circle, #7F8487, #413F42, black);
+    overflow: hidden;
+    font-family: 'Ubuntu', sans-serif;
+    background-repeat: no-repeat;
+
 
     overflow: hidden;
     font-family: 'Ubuntu', sans-serif;
@@ -107,11 +111,12 @@
   backdrop-filter:blur(6px);
   color: white;
   margin-bottom: 10px;
+  /* position: fixed; */
 }
 
 .login-page .iot-img{
   /* background: url('../../iot.jpg'); */
-  background: url('../iot.jpg');
+  background: url('iot.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -292,7 +297,7 @@ input [type='text']:focus{
 .img-banner{
 
   width: 40%;
-  background-image:linear-gradient(rgba(37, 37, 37, .5), rgba(0,0,0, .5)), url('./iot.jpg'); 
+  background-image:linear-gradient(rgba(37, 37, 37, .5), rgba(0,0,0, .5)), url('./imageiot.jpg'); 
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -452,8 +457,9 @@ list-style-type: none;
 }
 .modal-content form input{
   height: 30px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  /* border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px; */
+  border-radius: 20px;
   padding: 10px;
   margin:10px auto;
   margin-left: 20px;
@@ -477,8 +483,9 @@ background-color: red;
 }
 .credential-change input[type='submit']{
   display: block;
-  margin-left: 25%;
+  margin-left: 19%;
   transition: all .7s ease;
+  width: 30%;
 }
 
 .modal-content .icon-close-btn{
@@ -521,6 +528,19 @@ background-color: red;
 
 /* ----***||login screen */
 /* responsiveness */
+
+@media screen and (max-width: 560px){
+  body{
+    background-repeat: no-repeat;
+    overflow-x: scroll;
+  }
+/* min-width: 590px */
+  @media screen and (max-width: 636px){
+    .controls{
+      position: fixed;
+    }
+  }
+}
 @media screen and (max-width: 600px){
   body{
     overflow-y: hidden;
@@ -574,29 +594,36 @@ background-color: red;
 .forgotPass-container{
    color: white;
    font-family: 'Ubuntu', sans-serif;
+   margin-top: 7px;
+   /* padding:30px; */
 }
 .forgotPass-container  h2{
   text-align: center;
   margin: auto;
   color: white;
- 
+  
 }
 
-
+.forgotPass-container .test, .test2{
+  margin-top:10px;
+}
 
 /* .forgotPass-container p{
   text-align: center
 } */
 .forgotPass-container .sign-up{
-  width: 100%;
+  width: 30%;
   height: 40px;
   /* border-radius: 20px; */
   border: none;
   display: block;
   margin:7% 0 ;
-  transform: translateX(-25%);
-  background: white;
-  color: black;
+  transform: translateX(25%);
+  /* border-bottom: 3px solid #ee9b00; */
+  background:rgba(4,4,4, .5);
+  
+  
+  
   text-align: center;
   padding: 10px 0;
   cursor: pointer;
@@ -615,25 +642,45 @@ background-color: red;
   /* background-color: red; */
   box-shadow:0 3px 5px 3px #2eb1f8; 
   overflow: hidden;
+  padding:20px;
 }
 
 .forgotPass-form form {
   display: block;
-  transform: translateX(25%)
+  transform: translateX(25%);
+  margin:5%;
 }
 
+/* .sign-in{
+  text-align: center;
+  background: red;
+} */
+
+/* .forgotPass-form .flex-input{
+  display: flex;
+  gap: 10px;
+  width: 50%;
+  border: none;
+  height: 100%;
+
+} */
 .forgotPass-form form label{
   margin-top: 10px;
   border-bottom: 3px dotted grey;
   padding: 5px;
   
 }
+
+.forgotPass-form form p:nth-child(1){
+  text-align: center;
+  /* background: red; */
+}
 .forgotPass-form form input{
   width: 100%;
   height: 40px;
   /* border-radius: 20px; */
   padding-left: 10px;
-  background:transparent;
+  background:rgba(4,4,4, .5);
   border: none;
   display: block;
   margin:7% 0 ;
@@ -641,21 +688,32 @@ background-color: red;
   border-bottom: 3px solid #ee9b00;
   color: white;
 }
-.proceed{
+.forgotPass-form form .proceed{
   /* border-radius: 20px; */
-  background: white;
+  /* background: white; */
   /* border: none;
   width: 20px; */
+  background: transparent;
   transition: all .7s ease;
   cursor: pointer;
+  background:rgba(4,4,4, .5);
+  border-bottom: none;
+  /* width: 90px; */
+  /* transform: translateX(25%); */
 }
-.proceed:hover{
+.forgotPass-form form .proceed:hover{
   color: white;
   background: #2eb1f8;
 }
 input[type='submit']{
   width: 20px;
 }
+/* .forgotPass-form{
+  display:grid;
+  grid-template-columns: 20px 20px 20px 20px;
+  width: 40px;
+  gap: 4px;
+} */
 
 /* .forgotPass-form form  p{
   margin: 20px 0;
@@ -689,7 +747,10 @@ input[type='submit']{
    padding-bottom: 1%;
    animation: mymove .6s linear;
    position: relative;
+   top: -30px;
+   max-width:100%;
 }
+
 
 .navbar {
    /* display: flex; */
@@ -716,25 +777,47 @@ li{
 .text {
    margin-top: 2%;
    color: #2eb1f8;
+   min-width: 150px;
+   padding:0 10px;
 }
 
 
 .navbar ul .main-menu {
    position: absolute;
+   padding: 0 20px;
 }
 
 .navbar ul .main-menu .dropdown-menu {
    display: none;
+   width:100%;
+   /* test */
+   
    
 }
 
 .main-menu:hover {
   color: #2eb1f8;
 }
-
+.dropdown-menu ul{
+  max-width: 100%;
+  padding: 10px 20px;
+}
 .dropdown-menu ul li {
    margin: 20px auto;
+   /* padding: 10px; */
+   transition: all .50s ease;
+   width:100%;
+   color: #2eb1f8;
+   
+   
 }
+
+.dropdown-menu ul li:hover{
+ background: rgba(229, 230, 232, .5);
+ padding:10px 0;
+ text-shadow:0 0 2px 4px white
+}
+
 
 .navbar ul .main-menu:hover .dropdown-menu{
    display: block;
@@ -783,6 +866,7 @@ li{
    display: flex;
    color: #fff;
    margin-top: 50%;
+   /* position: sticky; */
 }
 
 
@@ -791,7 +875,10 @@ li{
    justify-content: space-between;
    margin-top: 5%;
    color: #fff;
-
+   /* position: sticky; */
+   /* we can remove this property or uncomment it  */
+   transform: translateY(-60px);
+   z-index: -2;
 }
 
 .startBtn {
@@ -900,6 +987,7 @@ input:checked[type="checkbox"]:after{
    margin-top: 3%;
    color: #fff;
    margin-right: 10%;
+   padding: 0 20px;
 }
 .logger:hover {
    color: rgb(228, 154, 57);
@@ -918,6 +1006,201 @@ input:checked[type="checkbox"]:after{
    animation: spin .2s linear infinite;
    
 } 
+
+/* ---------table styling----------- */
+/* .table-parent{
+  margin: auto;
+  position: relative;
+  left: -50%;
+  top:150px;
+} */
+
+
+.content-table {
+  border-collapse: collapse;
+  margin: 5% auto;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  /* backdrop-filter: blur(3px); */
+  /* position: absolute; */
+}
+
+.loader{
+  background:url('../src/spun.gif');
+  background-repeat: no-repeat;
+  background-size:30px 30px;
+  background-position: center;
+  height: 70px;
+  width: 70px;
+  align-self: center;
+  margin-top: 5px;
+}
+
+.loader-big{
+  background:url('../src/spinner.gif');
+  background-repeat: no-repeat;
+  background-size:30px 30px;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  align-self: center;
+  margin-top: 5px;
+  transform: translate(-10%, -25%) scale(3.5);
+  /* border-radius: 10px; */
+  /* transform: translateX(0); */
+}
+
+.hidden{
+  display: none;
+
+}
+.closebtn{
+  position: relative;
+  color: #13b3ff;
+  transform:translate(831px, 8px);;
+  max-width: 25px;
+  max-height: 25px;
+  transition: all .05s ease;
+  
+}
+
+.content-table thead tr {
+  /* background-color: #009879; */
+  background-color: #13b3ff;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 50px;
+  
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+  transition: all .50s ease;
+  
+}
+
+.content-table tbody tr:hover{
+  background:rgba(229, 230, 232, .5);
+}
+
+
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #13b3ff;
+}
+
+.content-table tbody tr.active-row {
+  font-weight: bold;
+  /* color: #009879; */
+  color: #13b3ff;
+}
+
+/* ----------table styling end------------ */
+
+.registered-user{
+ /* transform: translateY(-200%); */
+ position: fixed;
+ top:25%;
+ left: 25%;
+ max-height: 90%;
+ backdrop-filter: blur(3px);
+ /* overflow: scroll; */
+}
+
+.registered-user form{
+ transform: translateX(40%);
+ height: 50%;
+ /* border: 1px solid white; */
+ width: 60%;
+ backdrop-filter: blur(3px);
+ /* color: white; */
+ /* overflow: visible; */
+ background: rgba(255, 255, 255, .5);
+}
+
+.table-data{
+  overflow: scroll;
+}
+
+.registered-user form table{
+  padding: 20px;
+  width: inherit;
+  height: inherit;
+}
+
+.registered-user form table tr th{
+  padding-right: 70px;
+  padding-left: 0px;
+  /* margin-left: -5px; */
+  
+}
+#roles{
+  outline:none;
+  padding: 5px;
+}
+
+#roles option{
+  padding: 10px;
+  border-radius: none;
+  margin-top: 10px;
+  background-color: red;
+}
+  .list-header{
+    display: flex;
+    /* gap: 5rem; */
+    align-content: center;
+    justify-content: space-between; 
+    background:rgba(229, 230, 232, .5);
+    min-width: 650px;
+    margin: auto;
+    /* backdrop-filter: blur(3px); */
+      
+  }
+  .list-header input{
+    padding: 10px;
+  }
+  .list-header div{
+    margin-top:5px;
+    padding-right: 25px;
+  }
+  .list-header div label{
+    margin-right: 15%;
+    border-bottom: 3px solid #13b3ff;
+    border-bottom: 3px solid #13b3ff;
+    padding: 10px;
+  }
+form table tr td{
+margin-right: 30px;
+/* overflow: scroll; */
+}
+
+.search-field{
+  background: transparent;
+  border: 1px solid white;
+  height: 40px;
+  width: 300px;
+}
+
+/* .list-header{
+  display: flex;
+  gap: 5rem;
+  margin: auto;
+
+} */
+
+
 
 @keyframes spin {
   0% {
@@ -990,9 +1273,13 @@ input:checked[type="checkbox"]:after{
   }
 
   .header-container {
-    display: flex-start;
+    /* display: flex-start; */
+    display: flex;
     justify-content: space-between;
     align-content: space-between;
+    /* remove this property transform */
+  
+    
   }
 
 .text{
@@ -1212,7 +1499,22 @@ input:checked[type="checkbox"]:after{
 
 
 
-
+@media screen and (max-width:640px){
+  .registered-user{
+    /* width: 10%; */
+    width: 90%;
+    /* transform: translateX(-230%); */
+    transform: translateX(-22%);
+    /* margin:auto; */
+    overflow: scroll;
+  }
+  .closebtn{
+    transform: translate(546px, -16px);
+    z-index: 100;
+    position: absolute;
+  }
+ 
+}
 /* lg */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   body{
@@ -1225,11 +1527,16 @@ input:checked[type="checkbox"]:after{
 }
 
 /* xl */
-@media screen and (min-width: 1025px) and (max-width: 1280px) {
+@media screen and (min-width: 1025px) {
   body{
     background: radial-gradient(circle, #7F8487, #413F42, black);
 
   }
+ .registered-user{
+  margin: auto;
+  transform:translateX(-16%);
+ }
+
 
   .logger{
     margin-top: 3%;
@@ -1242,8 +1549,7 @@ input:checked[type="checkbox"]:after{
 
 }
 
-
-
+/* rgb(34,34,34), fifa setting like color */
 
 
 

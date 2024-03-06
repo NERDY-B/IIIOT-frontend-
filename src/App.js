@@ -7,7 +7,9 @@ import { Container } from 'react-bootstrap'
 import './index.css'
 import RegisterScreen from './screens/RegisterScreen';
 import SpinnerScreen from './screens/SpinnerScreen';
-import forgotScreen from './screens/ForgotScreen';
+import ForgotScreen from './screens/ForgotScreen';
+import Test from './screens/Test';
+
 
 const App = () => {
   return (
@@ -20,7 +22,8 @@ const App = () => {
           <Route path='/register' component={RegisterScreen}  />
           {/* <Route path='/testLogin' component={LoginScreenUpdate}  /> */}
           <Route path='/spinner' component={SpinnerScreen}  />
-          <Route path='/forgotpassword' component={forgotScreen}  />
+          <Route path='/forgotpassword' component={ForgotScreen}  />
+          {/* <Route path='/forgotpassword' component={Test}  /> */}
         </Container>
       </Router>
     </>

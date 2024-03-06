@@ -48,8 +48,26 @@ const RegisterScreen = (defaultProps) => {
     const changeEmailAccount = useSelector( state => state.changeEmailId);
     const {emailInfo} = changeEmailAccount
 
+useEffect(() => {
+    if(successOTP){
+        history.push('/')
+    }
+      
+}, [successOTP, history])
 
-let otpvalue = [...otp]
+
+const ValidateEmail= (email) => 
+{
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+    {
+        return (true)
+    }
+    alert("You have entered an invalid email address!")
+    return (false)
+}
+
+// let otpvalue = [...otp]
+
 
 
         // else setOTP('')
@@ -67,18 +85,26 @@ if(errorOTP){
         clearInterval(intervalId)
     }
 }
+
+    
   
     const registerHandler = (e) => {
         e.preventDefault()
+        console.log(Email)
         // console.log(userName, Email, password, 'returned ');
-        dispatch(userRegister(Email, userName, password));
+        const emailValid = ValidateEmail(Email);
+        if(emailValid){
+
+            dispatch(userRegister(Email, userName, password));
+            setModalOpen(!state)
+        localStorage.setItem('email', Email);
+        }
         // if((userName && Email && password ) === ''){
         //     inputValidation = false;
         // }else if(inputValidation){
         //     dispatch(userRegister(Email, userName, password));
         // }
-        setModalOpen(!state)
-        localStorage.setItem('email', Email);
+        
         // setTimer()
     }
 
@@ -118,18 +144,26 @@ if(errorOTP){
     }
 
     const inputotpHandler = (e) => {
-        setOTP(e.target.value);      
+        setOTP(e.target.value); 
+
         
     }
 
     const OtpHandler = (e) => {
-        const dispatch = useDispatch()
+        // const dispatch = useDispatch()
+        otp = setOTP(e.target.value)
+        let otpvalue = otp.trim();
+        console.log(otpvalue);
+        // console.log(otp)
+
+        // otpvalue.trim()
+
         if(otpvalue.length === 6){
             dispatch(genOTP((otp), Email))
             // (successOTP && history.push('/testLogin'))
             (successOTP && console.log('otp received'))
-            setOTP('')
-                // otpvalue = ''
+            
+                
                
             }
         
@@ -149,10 +183,7 @@ if(errorOTP){
         setChangeEmail(!change)
     }
 
-    if(successOTP){
-        history.push('/')
-    }
-      
+   
 
     if(otpInfo){
 
@@ -165,7 +196,7 @@ if(errorOTP){
     <div className='entryanimation'>
         <ul>
             <li></li>
-            <li><p className='title'>POWER REV</p></li>
+            <li><p className='title'>POWER IIOT</p></li>
             <li></li>
         </ul>
     </div>
@@ -234,10 +265,17 @@ if(errorOTP){
                                         <label> Input OTP sent to your mail:</label>
                                     
                                         <div className='input-proceed'>
+                                                {/* add the onclick event on the parent element input-proceed
+                                                    specify six input with the same class, queryselector all the input
+                                                    loop through input.
+                                                     assign an attribue onChange using js in each loop for the input
+                                                    to get the values assign all values to an array 
+                                                    an external or use useEffect to check if the array value is six then dispatch
 
-                                            <input type='text' pattern="[0-9]{1,6}" title='Digits only' value={otp} onChange={inputotpHandler} className='modal-text' />
-                                            {/* <input type='text' pattern="[0-9]{1,6}" title='Digits only' value={otp} onChange={otpHandler} className='modal-text' /> */}
-                                            <label onClick={(otpvalue.length === 6)&& dispatch(genOTP(otp, Email))}>xxx</label>
+                                                */}
+                                            {/* <input type='text' pattern="[0-9]{1,6}" title='Digits only' value={otp} onChange={inputotpHandler} className='modal-text' /> */}
+                                            {(loadingOTP)? <div className='loader'></div> :<input type='text' pattern="[0-9]{1,6}" title='Digits only' value={otp} onChange={OtpHandler} className='modal-text' />}
+                                            {/* <label onClick={(otpvalue.length === 6)&& dispatch(genOTP(otp, Email))}>xxx</label> */}
                                         </div>
                                         
                                         <div>
@@ -256,7 +294,7 @@ if(errorOTP){
                                 (
                                     <form className='credential-change' >
                                         <div className='icon-close-btn' onClick={closeModal}><MdClose size='22px'/></div>
-                                        <input type='text' value={localStorage.getItem('email') } placeholder='Old Email' style={{placeholder:'black'}}   />
+                                        <input type='readonly' value={localStorage.getItem('email') } placeholder='Old Email' style={{placeholder:'black'}}   />
                                         <input type='text' placeholder='New Email' value={Email}  onChange={emailHandler} />
                                         <input type='submit' value='Proceed' className='transform' onClick={ proceedChangeEmailHandler}/>
                                     </form>
