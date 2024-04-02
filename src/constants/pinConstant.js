@@ -1,0 +1,11 @@
+export const START_RUN_ITEM = 'START_RUN_ITEM'
+export const START_RUN_SUCCESS = 'START_RUN_SUCCESS'
+export const START_FAIL = 'START_FAIL'
+
+export const STOP_RUN_ITEM = 'STOP_RUN_ITEM'
+export const STOP_RUN_SUCCESS = 'STOP_RUN_SUCCESS'
+export const STOP_FAIL = 'STOP_FAIL'
+
+export const PIN_START_ITEM = 'PIN_START_ITEM'
+export const PIN_START_SUCCESS = 'PIN_START_SUCCESS'
+export const PIN_START_FAIL = 'PIN_START_FAIL'

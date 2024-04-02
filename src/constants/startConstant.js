@@ -1,0 +1,3 @@
+export const START_RUN_ITEM = 'START_RUN_ITEM'
+export const START_RUN_SUCCESS = 'START_RUN_SUCCESS'
+export const START_FAIL = 'START_FAIL'
