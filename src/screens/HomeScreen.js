@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
@@ -22,7 +22,8 @@ import LoginScreenUpdate from './LoginScreenUpdate'
 
 const HomeScreen = (defaultProps) => {
 
-    const history = useHistory()
+    // const history = useHistory()
+    const navigate = useNavigate()
     const { location, match, history: historyProps } = defaultProps
     const dispatch = useDispatch();
 
@@ -38,9 +39,9 @@ const HomeScreen = (defaultProps) => {
     
     useEffect( () => {
         if(success){
-            history.push('/spinner')
+            navigate('/spinner')
         }
-    }, [success, history])
+    }, [success, navigate])
 
     const userHandler = (e) => {
         setEmail(e.target.value)

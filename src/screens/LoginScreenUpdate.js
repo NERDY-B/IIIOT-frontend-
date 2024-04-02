@@ -3,12 +3,12 @@ import Header from '../components/Header'
 import { useDispatch, useSelector } from 'react-redux'
 import { startBtn } from '../actions/startAction'
 import { stopBtn } from '../actions/stopAction'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 // import { pinStart } from '../actions/pinApiStartAction'
 
 
 const LoginScreenUpdate = () => {
-    const history = useHistory()
+    const history = useNavigate()
     const pin = 26;
     let state;
 

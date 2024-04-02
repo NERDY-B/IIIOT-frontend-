@@ -3,7 +3,7 @@ import { startBtn } from '../actions/startAction'
 import { stopBtn } from '../actions/stopAction'
 import {useDispatch, useSelector} from 'react-redux'
 import Header from '../components/Header'
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 // import ControlBtn from '../components/ControlBtn'
@@ -28,7 +28,7 @@ const SpinnerScreen = () => {
         x:0
     })
   
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const userLogin = useSelector(state => state.userLogin)
     const { data: access_token } = userLogin
@@ -55,7 +55,8 @@ console.log(disabled);
 
         if(!access_token?.token) {
             alert('you are not logged in')
-            history.push('/')
+            // history.push('/')
+            navigate('/')
         } else {
             state = '1'
             dispatch(startBtn(pin, state))
@@ -69,7 +70,8 @@ console.log(disabled);
 
         if(!access_token?.token) {
             alert('you are not logged in')
-            history.push('/')
+            // history.push('/')
+            navigate('/')
         } else {
             state = '0'
             dispatch(stopBtn(pin, state))

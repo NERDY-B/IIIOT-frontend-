@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link, useHistory} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { forgotPassword, newSetPassword } from '../actions/forgotPassword'
 import {useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,7 +10,8 @@ import ForgotPasswordUIThree from '../Helper/ForgotPasswordUIThree'
 
 const ForgotScreen = () => {
     let[emailForgot, setEmailForgot] = useState('')
-    const history = useHistory();
+    // const history = useHistory();
+    const navigate = useNavigate();
     const dispatch = useDispatch()
     // let page,count;
     // let page;
@@ -42,14 +43,16 @@ const ForgotScreen = () => {
             //     setTimeout(() => {
             //         history.push('/')
             // }, 3000)
-            history.push('/')
+            // history.push('/')
+            navigate('/')
             }
                 
                     
-        },[successPassApi, history])
+        },[successPassApi, navigate])
 
         if(successPassApi){
-            history.push('/')
+            // history.push('/')
+            navigate('/')
         }
 
     const ValidateEmail= (emailForgot) => 
@@ -63,7 +66,8 @@ const ForgotScreen = () => {
             }
 
     const signUpHandler = () => {
-        history.push('/register')
+        // history.push('/register')
+        navigate('/register')
     }
 
     const emailForgotHandler = (e) => {
@@ -204,7 +208,8 @@ const ForgotScreen = () => {
             //   place loaing val for api to update password , if loading to show sign of success, settime out to route to default lgin page	
                 }
                 // ++count;
-                if(successPassApi) history.push('/')
+                // if(successPassApi) history.push('/')
+                if(successPassApi) navigate('/')
 
                 
                     // page = count;

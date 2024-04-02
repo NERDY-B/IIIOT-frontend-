@@ -2,7 +2,7 @@ import React from 'react'
 import Modal from 'react-modal';
 import {useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { genOTP, resendOTP, userRegister, changeEmail } from '../actions/userAction'
 import Loader from '../components/Loader'
 import { FaFacebook } from "react-icons/fa6";
@@ -17,7 +17,7 @@ import { MdClose } from "react-icons/md";
 
 const RegisterScreen = (defaultProps) => {
     const dispatch = useDispatch();
-    const history = useHistory()
+    const history = useNavigate()
     
     let state = false
     let [change, setChangeEmail] = useState(false);
@@ -51,7 +51,7 @@ const RegisterScreen = (defaultProps) => {
 useEffect(() => {
     if(successOTP){
         
-        history.push('/')
+        history('/')
     }
       
 }, [successOTP, history])
